@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo con Funciones JS</title>
+	<style>
+		body {
+			background-color: teal;
+			font: 16px Arial;
+		}
+		nav {
+			margin: 150px auto;
+			width: 1140px;
+		}
+		nav ul.products {
+			list-style: none;
+			margin: 0px;
+			padding: 20px;
+		}
+		nav ul.products li {
+			border: 4px solid #005050;
+			border-radius: 10px;
+			background-color: #fff;
+			display: inline-block;
+			height: 300px;
+			margin-right: 50px;
+			vertical-align: top;
+			overflow: hidden;
+			padding: 10px;
+			width: 300px;
+		}
+		nav ul.products li:last-child {
+			margin-right: 0px;
+		}
+		nav ul.products li div figure.img {
+			height: 200px;
+			margin: 30px auto;
+			width: 280px;
+		}
+		nav ul.products li div figure.img1 {
+			background: url(imgs/bike01.png) no-repeat center center; 
+			background-size: 114%;
+		}
+		nav ul.products li div figure.img2 {
+			background: url(imgs/bike02.jpg) no-repeat center center; 
+			background-size: 100%;
+		}
+		nav ul.products li div figure.img3 {
+			background: url(imgs/bike03.jpg) no-repeat center center; 
+			background-size: 100%;
+		}
+		nav ul.products li div button {
+			background-color: teal;
+			border: none;
+			border-radius: 100px;
+			color: #fff;
+			font: 16px Arial;
+			display: block;
+			padding: 10px;
+			margin: -20px auto 0px auto;
+			width: 140px;
+			-webkit-transition: 0.5s all ease-in;
+		}
+		nav ul.products li div button:hover {
+			cursor: pointer;
+			background-color: #006d6d;
+			-webkit-transform: scale(1.1);
+		}
+
+		.movedown {
+			-webkit-animation: 1s animMoveDown 1;
+		}
+		@-webkit-keyframes animMoveDown {
+			0% {
+				-webkit-transform: translate(0px, 0px);
+				opacity: 1;
+			}
+			100% {
+				-webkit-transform: translate(250px, 250px);
+				opacity: 0;	
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="products">
+			<li id="pr1">
+				<div class="state1">
+					<figure class="img img1"></figure>
+					<button id="btn1"> Ver + </button>
+				</div>
+			</li>
+			<li id="pr2">
+				<div class="state1">
+					<figure class="img img2"></figure>
+					<button id="btn2"> Ver + </button>
+				</div>
+			</li>
+			<li id="pr3">
+				<div class="state1">
+					<figure class="img img3"></figure>
+					<button id="btn3"> Ver + </button>
+				</div>
+			</li>
+		</ul>
+	</nav>
+
+	<script>
+		var states = document.getElementsByClassName('state1');
+		var btn1   = document.getElementById('btn1');
+		var btn2   = document.getElementById('btn2');
+		var btn3   = document.getElementById('btn3');
+
+		btn1.onclick = function() {
+			states[0].classList.add('movedown');
+			setTimeout(function() { states[0].classList.remove('movedown'); }, 1200);
+		}
+		btn2.onclick = function() {
+			states[1].classList.add('movedown');
+			setTimeout(function() { states[0].classList.remove('movedown'); }, 1200);
+		}
+		btn3.onclick = function() {
+			states[2].classList.add('movedown');
+			setTimeout(function() { states[0].classList.remove('movedown'); }, 1200);
+		}
+
+	</script>
+</body>
+</html>
