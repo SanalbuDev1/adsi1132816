@@ -68,17 +68,68 @@
 		}
 
 		.movedown {
-			-webkit-animation: 1s animMoveDown 1;
+			-webkit-animation: 1s animMoveDown 1 forwards;
 		}
+
 		@-webkit-keyframes animMoveDown {
 			0% {
-				-webkit-transform: translate(0px, 0px);
-				opacity: 1;
+				-webkit-transform: translateY(0px);
 			}
 			100% {
-				-webkit-transform: translate(250px, 250px);
-				opacity: 0;	
+				-webkit-transform: translateY(320px);
 			}
+		}
+
+		.moveup{
+			-webkit-animation: 1s animMoveUp 1 forwards;
+		}
+
+		@-webkit-keyframes animMoveUp {
+			0% {
+				-webkit-transform: translateY(320px);
+			}
+			100% {
+				-webkit-transform: translateY(0px);
+			}
+		}
+
+		section.block {
+			position: relative;
+			top: -320px;
+		}
+
+		div.info {
+			border-radius: 10px;
+			background: -webkit-linear-gradient(top, #000, #777);
+			color: #aaa;
+			height: 280px;
+			padding: 10px;
+			position: relative;
+		}
+		div.info h2 {
+			margin: 0px;
+			color: #fff;
+		}
+		div.info p {
+			text-align: justify;
+			line-height: 22px;
+		}
+		div.info span {
+			background-color: #df1441;
+			border-radius: 20px;
+			height: 20px;
+			color: #fff;
+			display: block;
+			font-size: 1.4em;
+			text-align: center;
+			line-height: 22px;
+			position: absolute;
+			top: 4px;
+			right: 4px;
+			width: 20px;
+		}
+		div.info span:hover {
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -86,45 +137,90 @@
 	<nav>
 		<ul class="products">
 			<li id="pr1">
-				<div class="state1">
-					<figure class="img img1"></figure>
-					<button id="btn1"> Ver + </button>
-				</div>
+				<section class="block">
+					<div class="info">
+						<h2>Yeti SBC 5</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis doloribus, maxime similique neque officia deserunt harum eveniet quo nisi veniam nihil autem ratione, earum eos officiis rem, enim voluptatibus odio.
+						</p>
+						<span id="close1"> &times; </span>
+					</div>
+					<div class="state">
+						<figure class="img img1"></figure>
+						<button id="btn1"> Ver + </button>
+					</div>
+				</section>
 			</li>
 			<li id="pr2">
-				<div class="state1">
-					<figure class="img img2"></figure>
-					<button id="btn2"> Ver + </button>
-				</div>
+				<section class="block">
+					<div class="info">
+						<h2>Intense Recluse</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis doloribus, maxime similique neque officia deserunt harum eveniet quo nisi veniam nihil autem ratione, earum eos officiis rem, enim voluptatibus odio.
+						</p>
+						<span id="close2"> &times; </span>
+					</div>
+					<div class="state">
+						<figure class="img img2"></figure>
+						<button id="btn2"> Ver + </button>
+					</div>
+				</section>
 			</li>
 			<li id="pr3">
-				<div class="state1">
-					<figure class="img img3"></figure>
-					<button id="btn3"> Ver + </button>
-				</div>
+				<section class="block">
+					<div class="info">
+						<h2>Santa Cruz Nomad</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis doloribus, maxime similique neque officia deserunt harum eveniet quo nisi veniam nihil autem ratione, earum eos officiis rem, enim voluptatibus odio.
+						</p>
+						<span id="close3"> &times; </span>
+					</div>
+					<div class="state">
+						<figure class="img img3"></figure>
+						<button id="btn3"> Ver + </button>
+					</div>
+				</section>
 			</li>
 		</ul>
 	</nav>
 
 	<script>
-		var states = document.getElementsByClassName('state1');
+		var blocks = document.getElementsByClassName('block');
 		var btn1   = document.getElementById('btn1');
 		var btn2   = document.getElementById('btn2');
 		var btn3   = document.getElementById('btn3');
 
+		var close1 = document.getElementById('close1');
+		var close2 = document.getElementById('close2');
+		var close3 = document.getElementById('close3');
+
+		function toggleFx(inx, dir) {
+			if(dir == 'down') {
+				blocks[inx].classList.remove('moveup');
+				blocks[inx].classList.add('movedown');
+			} else {
+				blocks[inx].classList.remove('movedown');
+				blocks[inx].classList.add('moveup');
+			}
+		}
 		btn1.onclick = function() {
-			states[0].classList.add('movedown');
-			setTimeout(function() { states[0].classList.remove('movedown'); }, 1200);
+			toggleFx(0, 'down');
 		}
 		btn2.onclick = function() {
-			states[1].classList.add('movedown');
-			setTimeout(function() { states[0].classList.remove('movedown'); }, 1200);
+			toggleFx(1, 'down');
 		}
 		btn3.onclick = function() {
-			states[2].classList.add('movedown');
-			setTimeout(function() { states[0].classList.remove('movedown'); }, 1200);
+			toggleFx(2, 'down');
 		}
-
+		close1.onclick = function() {
+			toggleFx(0, 'up');
+		}
+		close2.onclick = function() {
+			toggleFx(1, 'up');
+		}
+		close3.onclick = function() {
+			toggleFx(2, 'up');
+		}
 	</script>
 </body>
 </html>
